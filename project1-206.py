@@ -7,11 +7,35 @@ from datetime import date
 def getData(file):
 # get a list of dictionary objects from the file
 #Input: file name
+        # open the file for reading
+        inFile = open("P1DataA.csv","r")
 #Ouput: return a list of dictionary objects where
 #the keys are from the first row in the data. and the values are each of the other rows
+        
+        pass
+        dic_list = []
+        # read a line from the file
+        line = inFile.readline()
 
-	pass
+        # while there is another line
+        while line:
+                my_dict = {}
+                first_name = line[0]
+                last_name = line[1]
+                email = line[2]
+                class_standing = line[3]
+                DOB = line[4]
 
+                my_dict["First"] = first_name
+                my_dict["Last"] = last_name
+                my_dict["Email"] = email
+                my_dict["Class"] = class_standing
+                my_dict["DOB"] = DOB
+                dic_list.append(my_dict)
+                return dic_list
+                # read the next line
+                line = inFile.readline()
+ 
 def mySort(data,col):
 # Sort based on key/column
 #Input: list of dictionaries and col (key) to sort on
