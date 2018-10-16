@@ -8,23 +8,24 @@ def getData(file):
 # get a list of dictionary objects from the file
 #Input: file name
         # open the file for reading
-        inFile = open("P1DataA.csv","r")
+        inFile = open(file,"r")
 #Ouput: return a list of dictionary objects where
 #the keys are from the first row in the data. and the values are each of the other rows
         
-        pass
         dic_list = []
         # read a line from the file
         line = inFile.readline()
 
         # while there is another line
         while line:
+                parts = line.split(",")
                 my_dict = {}
-                first_name = line[0]
-                last_name = line[1]
-                email = line[2]
-                class_standing = line[3]
-                DOB = line[4]
+                                  
+                first_name = parts[0]
+                last_name = parts[1]
+                email = parts[2]
+                class_standing = parts[3]
+                DOB = parts[4]
 
                 my_dict["First"] = first_name
                 my_dict["Last"] = last_name
@@ -32,17 +33,27 @@ def getData(file):
                 my_dict["Class"] = class_standing
                 my_dict["DOB"] = DOB
                 dic_list.append(my_dict)
-                return dic_list
                 # read the next line
                 line = inFile.readline()
+        return dic_list
+        # close the file
+        inFile.close()
+        
+        pass
  
 def mySort(data,col):
+        
 # Sort based on key/column
 #Input: list of dictionaries and col (key) to sort on
+        name_order = []
+        sorted_dictionary  = sorted(data, key = lambda x: x[col])
 #Output: Return the first item in the sorted list as a string of just: firstName lastName
 
-	pass
+        for name in sorted_dictionary: 
+                name_order.append(str(name["First"] + " " + name["Last"]))
+        return name_order[0]
 
+        pass
 
 def classSizes(data):
 # Create a histogram
