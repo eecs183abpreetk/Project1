@@ -1,3 +1,7 @@
+#Abpreet Kaur
+#SI 206
+#Project #1
+
 import os
 import filecmp
 from dateutil.relativedelta import *
@@ -61,16 +65,44 @@ def classSizes(data):
 # Output: Return a list of tuples sorted by the number of students in that class in
 # descending order
 # [('Senior', 26), ('Junior', 25), ('Freshman', 21), ('Sophomore', 18)]
+        pass
 
-	pass
+        freshman_tracker = 0
+        sopho_tracker = 0
+        junior_tracker = 0
+        senior_tracker = 0
 
+        for my_dict in data:
+                if my_dict["Class"] == "Freshman":
+                        freshman_tracker += 1
+                if my_dict["Class"] == "Sophomore":
+                        sopho_tracker += 1
+                if my_dict["Class"] == "Junior":
+                        junior_tracker += 1
+                if my_dict["Class"] == "Senior":
+                        senior_tracker += 1
+
+        tupl_freshman = ("Freshman", freshman_tracker)
+        tupl_sopho = ("Sophomore", sopho_tracker)
+        tupl_junior = ("Junior", junior_tracker)
+        tupl_senior = ("Senior", senior_tracker)
+
+        final_sort = [tupl_freshman, tupl_sopho, tupl_junior, tupl_senior]
+        return sorted(final_sort, key = lambda x:x[1], reverse = True)
 
 def findMonth(a):
 # Find the most common birth month form this data
 # Input: list of dictionaries
-# Output: Return the month (1-12) that had the most births in the data
+# Output: Return the month (1-12) that had the most births in the data #initialize dict as empty
+        dict_months = {}
+        for name in a:
+                birthday_month = name["DOB"].split("/")[0]
+                if birthday_month not in dict_months:
+                        dict_months[birthday_month] = 1
+                dict_months[birthday_month] += 1
+        return int((sorted((dict_months),key = lambda x: dict_months[x],reverse = True))[0])
 
-	pass
+        pass 
 
 def mySortPrint(a,col,fileName):
 #Similar to mySort, but instead of returning single
