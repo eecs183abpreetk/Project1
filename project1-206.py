@@ -96,10 +96,10 @@ def findMonth(a):
 # Output: Return the month (1-12) that had the most births in the data #initialize dict as empty
         dict_months = {}
         for name in a:
-                birthday_month = name["DOB"].split("/")[0]
-                if birthday_month not in dict_months:
-                        dict_months[birthday_month] = 1
-                dict_months[birthday_month] += 1
+                birthday = name["DOB"].split("/")[0]
+                if birthday not in dict_months:
+                        dict_months[birthday] = 1
+                dict_months[birthday] += 1
         return int((sorted((dict_months),key = lambda x: dict_months[x],reverse = True))[0])
 
         pass 
@@ -110,8 +110,16 @@ def mySortPrint(a,col,fileName):
 # as fist,last,email
 #Input: list of dictionaries, col (key) to sort by and output file name
 #Output: No return value, but the file is written
+        
+        outfile = open(fileName, "w")
+        student_output = a[1:]
+        sort_print = sorted(student_output, key = lambda x: x[col])
+        
+        for name in sort_print:
+                outfile.write("{},{},{}\n".format(name["First"].strip(),name["Last"].strip(),name["Email"].strip()))
 
-	pass
+        outfile.close()
+        pass
 
 def findAge(a):
 # def findAge(a):
@@ -120,14 +128,12 @@ def findAge(a):
 # integer.  You will need to work with the DOB and the current date to find the current
 # age in years.
 
-	pass
-
-
+        pass
 ################################################################
 ## DO NOT MODIFY ANY CODE BELOW THIS
 ################################################################
 
-## We have provided simple test() function used in main() to print what each function returns vs. what it's supposed to return.
+## We have provided simple test() function used in  main() to print what each function returns vs. what it's supposed to return.
 def test(got, expected, pts):
   score = 0;
   if got == expected:
