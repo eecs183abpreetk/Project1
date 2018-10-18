@@ -127,7 +127,21 @@ def findAge(a):
 # Output: Return the average age of the students and round that age to the nearest
 # integer.  You will need to work with the DOB and the current date to find the current
 # age in years.
+        current_year = int(2018)
+        age_list = []
+        now = date.today()
 
+        ent_students = a[1:]
+        for name in ent_students:
+                dates = name["DOB"].split("/")
+                date_month = int(dates[0])
+                date_day =  int(dates[1])
+                date_year =  int(dates[2])
+        
+                age = int(current_year - date_year)
+                total_ages = age_list.append(int(age))
+        average = int((sum(age_list)/len(age_list)))
+        return average
         pass
 ################################################################
 ## DO NOT MODIFY ANY CODE BELOW THIS
