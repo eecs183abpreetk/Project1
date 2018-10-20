@@ -49,14 +49,10 @@ def mySort(data,col):
         
 # Sort based on key/column
 #Input: list of dictionaries and col (key) to sort on
-        name_order = []
-        sorted_dictionary  = sorted(data, key = lambda x: x[col])
+
 #Output: Return the first item in the sorted list as a string of just: firstName lastName
-
-        for name in sorted_dictionary: 
-                name_order.append(str(name["First"] + " " + name["Last"]))
-        return name_order[0]
-
+        entire_sorted = sorted(data, key = lambda x: x[col])
+        return entire_sorted[0]["First"] + " " + entire_sorted[0]["Last"]
         pass
 
 def classSizes(data):
@@ -111,13 +107,12 @@ def mySortPrint(a,col,fileName):
 #Input: list of dictionaries, col (key) to sort by and output file name
 #Output: No return value, but the file is written
         
-        outfile = open(fileName, "w")
-        student_output = a[1:]
-        sort_print = sorted(student_output, key = lambda x: x[col])
         
-        for name in sort_print:
-                outfile.write("{},{},{}\n".format(name["First"].strip(),name["Last"].strip(),name["Email"].strip()))
-
+        outfile = open(fileName, "w")
+        output_write = a[1:]
+        sorted_dicts = sorted(output_write, key = lambda x: x[col])
+        for name in sorted_dicts:
+                outfile.write("{},{},{}\n".format(name["First"],name["Last"],name["Email"]))
         outfile.close()
         pass
 
